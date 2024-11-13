@@ -1,2 +1,2 @@
-# Profix-
-ProFix is an application designed to help clients find and book appointments with experts in electronics repair. Shop owners can manage their workers, and workers can handle appointments, track income, and handle urgent repair requests. The backend for ProFix will be built using Node.js, Express, and MongoDB.
+# ProFix – Electronics Repair Shop Management
+Welcome to ProFix, a MERN stack-based application that simplifies the management of electronics repair services. ProFix allows clients to connect with technicians based on their expertise, book appointments, track service requests, and manage interactions with repair shops effectively.
