@@ -28,3 +28,31 @@ Role-Based Access: Different dashboards for Shop Owners, Workers, and Clients wi
 Technician Expertise Matching: Match client issues with technicians having the relevant expertise for efficient service.
 Shop Recommendations: Automatically suggest alternative repair shops if an issue cannot be resolved at a particular shop.
 Direct Contact for Urgent Repairs: Contact information is provided for urgent service requests, streamlining the process.
+
+# Tech Stack
+
+1. Frontend: React.js, CSS (deployed on Netlify)
+2. Backend: Node.js, Express.js (deployed on Render)
+3. Database: MongoDB (Atlas)
+4. Authentication: JSON Web Tokens (JWT)
+5. Deployment: Netlify (Frontend), Render (Backend)
+
+# Usage
+
+1. Client Experience:
+   Register and log in as a client.
+   Describe the issue with your device and get matched with a qualified technician.
+   Book appointments and track service status in real-time.
+2. Worker Dashboard:
+   Access job assignments based on expertise.
+   Track and update appointment statuses.
+3. Shop Owner Dashboard:
+   Manage the team, track business operations, and review completed repairs.
+   Track finances and appointment histories for better shop management.
+
+# Contact
+
+For any inquiries or feedback, feel free to contact us:
+
+Email: yashchandrawat52@gmail.com
+LinkedIn: "[Your LinkedIn Profile](https://www.linkedin.com/in/yash-chandrawat-1y1/)"
