@@ -137,3 +137,24 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.logout = async (req, res) => {
+  try {
+    // Clear the cookie
+    res.clearCookie("auth_token", {
+      httpOnly: true, // Ensure cookie is only accessible via HTTP
+      secure: true, // Use secure cookies in production
+      sameSite: "strict", // Prevent cross-site request forgery
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully",
+    });
+  } catch (error) {
+    return res.status(404).json({
+      success: false,
+      message: "Logout failed",
+    });
+  }
+};
