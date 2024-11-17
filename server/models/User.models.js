@@ -1,41 +1,30 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
-  {
-    userName: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    contact: {
-      type: Number,
-      required: true,
-    },
-    accountType: {
-      type: String,
-      required: true,
-      enum: ["shopOwner", "worker", "client"],
-    },
-    profileData: {
-      type: mongoose.Schema.Types.ObjectId,
-      refPath: "profileModel", // Dynamically set the ref based on profileModel
-    },
-    profileModel: {
-      type: String,
-      required: true,
-      enum: ["ShopOwnerData", "WorkerData", "ClientData"],
-    },
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  contact: { type: String, required: true },
+  accountType: {
+    type: String,
+    required: true,
+    enum: ["Worker", "Client", "Owner"],
   },
-  { timestamps: true }
-);
+  workerData: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "WorkerData",
+    default: null,
+  },
+  clientData: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ClientData",
+    default: null,
+  },
+  shopData: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ShopData",
+    default: null,
+  },
+});
 
 module.exports = mongoose.model("User", userSchema);

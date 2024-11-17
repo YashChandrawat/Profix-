@@ -4,12 +4,12 @@ const jwt = require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
   try {
-    const { userName, email, password, confirmPassword, contact, accountType } =
+    const { name, email, password, confirmPassword, contact, accountType } =
       req.body;
 
     // Validation
     if (
-      !userName ||
+      !name ||
       !email ||
       !password ||
       !confirmPassword ||
@@ -41,24 +41,13 @@ exports.signup = async (req, res) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Set profile model based on account type
-    let profileMod;
-    if (accountType === "shopOwner") {
-      profileMod = "ShopOwnerData";
-    } else if (accountType === "worker") {
-      profileMod = "WorkerData";
-    } else if (accountType === "client") {
-      profileMod = "ClientData";
-    }
-
     // Create new user
     const newUser = await User.create({
-      userName, // Use correct variable name here
+      name, // Use correct variable name here
       email,
       password: hashedPassword,
       contact,
       accountType,
-      profileModel: profileMod,
     });
 
     if (newUser) {

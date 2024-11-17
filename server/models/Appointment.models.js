@@ -1,40 +1,26 @@
 const mongoose = require("mongoose");
 
-const AppointmentSchema = new mongoose.Schema(
-  {
-    shop: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "ShopOwnerData",
-      required: true,
-    },
-    worker: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "WorkerData",
-      required: true,
-    },
-    client: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "ClientData",
-      required: true,
-    },
-    date: { 
-        type: Date, 
-        required: true 
-    },
-    time: String,
-    amount: Number,
-    priority: {
-      type: String,
-      enum: ["low", "medium", "high"],
-      default: "medium",
-    },
-    status: {
-      type: String,
-      enum: ["pending", "completed", "canceled"],
-      default: "pending",
-    },
+const appointmentSchema = new mongoose.Schema({
+  worker: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "WorkerData",
+    required: true,
   },
-  { timestamps: true }
-);
-
-module.exports = mongoose.model("Appointment", AppointmentSchema);
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ClientData",
+    required: true,
+  },
+  shop: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ShopData",
+    required: true,
+  },
+  time: { type: Date, required: true },
+  status: {
+    type: String,
+    required: true,
+    enum: ["Pending", "Completed", "Cancelled"],
+  },
+});
+module.exports = mongoose.model("Appointment", appointmentSchema);

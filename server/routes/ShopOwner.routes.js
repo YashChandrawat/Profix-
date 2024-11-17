@@ -1,9 +1,8 @@
 const express = require("express");
 const { verifyToken } = require("../middlewares/VerifyToken");
-const { currentUser } = require("../controllers/User.controller");
-
+const { IsShopOwner } = require("../middlewares/IsShopOwner");
 const router = express.Router();
 
-router.get("/me", verifyToken, currentUser);
+router.post("/createShop/:id", verifyToken, IsShopOwner);
 
 module.exports = router;
