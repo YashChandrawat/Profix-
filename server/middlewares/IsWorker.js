@@ -1,6 +1,6 @@
 const User = require("../models/User.models");
 
-exports.IsShopOwner = async (req, res, next) => {
+exports.IsWorker = async (req, res, next) => {
   try {
     const { userId } = req.user;
     if (!userId) {
@@ -18,18 +18,18 @@ exports.IsShopOwner = async (req, res, next) => {
       });
     }
 
-    if (user.accountType === "Owner") {
+    if (user.accountType === "Worker") {
       next();
     } else {
       return res.status(402).json({
         success: false,
-        message: "This is the private route for the ShopOwner",
+        message: "This is the private route for the Worker",
       });
     }
   } catch (error) {
     return res.status(404).json({
       success: false,
-      message: "Error in validating the shop owner",
+      message: "Error in validating the Worker Profile",
       error: error,
     });
   }

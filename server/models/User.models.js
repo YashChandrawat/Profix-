@@ -10,16 +10,20 @@ const userSchema = new mongoose.Schema({
     required: true,
     enum: ["Worker", "Client", "Owner"],
   },
-  workerData: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "WorkerData",
-    default: null,
-  },
-  clientData: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ClientData",
-    default: null,
-  },
+  workerData: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "WorkerData",
+      default: null,
+    },
+  ],
+  clientData: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ClientData",
+      default: null,
+    },
+  ],
   shopData: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "ShopData",
